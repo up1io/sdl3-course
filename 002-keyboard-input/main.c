@@ -38,7 +38,7 @@ SDL_AppEvent (void *appstate, SDL_Event *event)
       return SDL_APP_SUCCESS;
     }
 
-  // Note: Here where a listen only ofr key down and up events and print the
+  // Note: Here where a listen only for key down and up events and print the
   // pressed key to the console.
   switch (event->type)
     {
