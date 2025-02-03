@@ -11,59 +11,60 @@ static SDL_Window *window = NULL;
 static SDL_Renderer *renderer = NULL;
 
 SDL_AppResult
-SDL_AppInit (void **appstate, int argc, char **argv)
+SDL_AppInit(void **appstate, int argc, char **argv)
 {
-  SDL_SetAppMetadata ("Window", "1.0", "com.up.window");
+    SDL_SetAppMetadata("Window", "1.0", "com.up.window");
 
-  if (!SDL_Init (SDL_INIT_VIDEO))
+    if (!SDL_Init(SDL_INIT_VIDEO))
     {
-      SDL_Log ("Couldn't initialize SDL: %s", SDL_GetError ());
-      return SDL_APP_FAILURE;
+        SDL_Log("ERROR: Couldn't initialize SDL: %s", SDL_GetError ());
+        return SDL_APP_FAILURE;
     }
 
-  if (!SDL_CreateWindowAndRenderer ("Window", 640, 800, 0, &window, &renderer))
+    if (!SDL_CreateWindowAndRenderer("Window", 640, 800, 0, &window, &renderer))
     {
-      SDL_Log ("Couldn't create winodw/renderer: %s", SDL_GetError ());
-      return SDL_APP_FAILURE;
+        SDL_Log("ERROR: Couldn't create winodw/renderer: %s", SDL_GetError ());
+        return SDL_APP_FAILURE;
     }
 
-  return SDL_APP_CONTINUE;
+    return SDL_APP_CONTINUE;
 }
 
 SDL_AppResult
-SDL_AppEvent (void *appstate, SDL_Event *event)
+SDL_AppEvent(void *appstate, SDL_Event *event)
 {
-  if (event->type == SDL_EVENT_QUIT)
+    if (event->type == SDL_EVENT_QUIT)
     {
-      return SDL_APP_SUCCESS;
+        return SDL_APP_SUCCESS;
     }
 
-  // Note: Here where a listen only for key down and up events and print the
-  // pressed key to the console.
-  switch (event->type)
+    // Note(john): This only listens for key down and up events 
+    // and prints the key pressed to the console.
+    switch (event->type)
     {
-    case (SDL_EVENT_KEY_UP):
-      printf ("User released key: %c\n", event->key.key);
-      break;
-    case (SDL_EVENT_KEY_DOWN):
-      printf ("User pressed key: %c\n", event->key.key);
-      break;
+        case (SDL_EVENT_KEY_UP):
+            printf("INFO: User released key: %c\n", event->key.key);
+            break;
+        case (SDL_EVENT_KEY_DOWN):
+            printf("INFO: User pressed key: %c\n", event->key.key);
+            break;
     }
 
-  return SDL_APP_CONTINUE;
+    return SDL_APP_CONTINUE;
 }
 
 SDL_AppResult
-SDL_AppIterate (void *appstate)
+SDL_AppIterate(void *appstate)
 {
-  SDL_SetRenderDrawColor (renderer, 255, 50, 50, SDL_ALPHA_OPAQUE_FLOAT);
-  SDL_RenderClear (renderer);
-  SDL_RenderPresent (renderer);
+    SDL_SetRenderDrawColor(renderer, 255, 50, 50, SDL_ALPHA_OPAQUE_FLOAT);
+    SDL_RenderClear(renderer);
+    SDL_RenderPresent(renderer);
 
-  return SDL_APP_CONTINUE;
+    return SDL_APP_CONTINUE;
 }
 
 void
-SDL_AppQuit (void *appstate, SDL_AppResult result)
+SDL_AppQuit(void *appstate, SDL_AppResult result)
 {
+    SDL_Log("INFO: Application quit");
 }
