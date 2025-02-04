@@ -1,7 +1,7 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 
-#include "main.h"
+#include "app.h"
 #include "math.h"
 
 SDL_GPUBuffer* APP_CreateVertexBuffer(struct APP_Context *ctx);
