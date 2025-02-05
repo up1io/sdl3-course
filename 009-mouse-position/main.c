@@ -26,7 +26,6 @@ SDL_AppInit(void **appstate, int argc, char **argv)
     return SDL_APP_CONTINUE;
 }
 
-void SDL_SetLogPriority(int category, SDL_LogPriority priority);                            // Set the priority of a particular log category.
 SDL_AppResult
 SDL_AppEvent(void *appstate, SDL_Event *event)
 {
