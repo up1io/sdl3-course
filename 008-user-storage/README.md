@@ -1,6 +1,6 @@
 # User Storage Example
 
-In this example we write and read via the (SDL3 Storage API)[https://wiki.libsdl.org/SDL3/CategoryStorage] user related data.
+In this example we write and read via the [SDL3 Storage API](https://wiki.libsdl.org/SDL3/CategoryStorage) user related data.
 
 ## Location
 
